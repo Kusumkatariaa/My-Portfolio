@@ -3,19 +3,22 @@ import image from "../assets/images/mail-image.webp"; // Ensure you have the ima
 
 function Contact() {
     return (
-        <section id="contact" className=" text-white py-12 px-4 md:px-10">
-            <div className="text-center mb-8">
+        <section
+            id="contact"
+            className="text-white py-16 px-6 md:px-12"
+        >
+            <div className="text-center mb-12">
                 <p className="text-sm text-gray-400">You can text me directly</p>
-                <h2 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] bg-clip-text text-transparent">
+                <h2 className="text-4xl font-bold bg-gradient-to-r  bg-clip-text text-transparent">
                     Write Me
                 </h2>
             </div>
 
-            <div className="">
+            <div className="max-w-4xl flex-row mx-auto from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] rounded-3xl shadow-lg p-6 sm:p-10 flex md:flex-row items-center gap-10 border border-gray-700">
                 {/* Left - Illustration */}
                 <div className="w-full md:w-1/2">
                     <img
-                        src={image} // replace with your image path
+                        src={image} // Replace this with your image import or path
                         alt="Mail Illustration"
                         className="w-full"
                     />
@@ -23,25 +26,50 @@ function Contact() {
 
                 {/* Right - Form */}
                 <div className="w-full md:w-1/2">
-                    <h3 className="text-2xl font-semibold mb-4 text-white">Email Me</h3>
-                    <form className="flex flex-col gap-4">
+                    <h3 className="text-2xl font-semibold mb-6">Email Me</h3>
+                    <form
+                        onSubmit={async (e) => {
+                            e.preventDefault();
+                            const email = e.target.email.value;
+                            const message = e.target.message.value;
+
+                            const res = await fetch("http://localhost:5000/api/send", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ email, message }),
+                            });
+
+                            if (res.ok) {
+                                alert("Message sent successfully!");
+                                e.target.reset();
+                            } else {
+                                alert("Failed to send message.");
+                            }
+                        }}
+                        className="flex flex-col gap-5"
+                    >
                         <input
                             type="email"
-                            placeholder="Email"
-                            className="p-3 rounded-md bg-[#1a1f2c] text-white placeholder-gray-400 outline-none border border-gray-600"
+                            name="email"
+                            required
+                            placeholder="Your Email"
+                            className="bg-[#1e2633] text-white placeholder-gray-400 p-3 rounded-md border border-gray-600 outline-none focus:ring-2 focus:ring-[#548FBA]"
                         />
                         <textarea
-                            placeholder="Message..."
-                            rows="5"
-                            className="p-3 rounded-md bg-[#1a1f2c] text-white placeholder-gray-400 outline-none border border-gray-600"
+                            name="message"
+                            required
+                            rows="4"
+                            placeholder="Your Message"
+                            className="bg-[#1e2633] text-white placeholder-gray-400 p-3 rounded-md border border-gray-600 outline-none focus:ring-2 focus:ring-[#548FBA]"
                         ></textarea>
                         <button
                             type="submit"
-                            className="bg-gradient-to-r from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] hover:opacity-90 text-white font-semibold py-3 rounded-md transition-all"
+                            className="bg-gradient-to-r from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] text-white font-semibold py-3 rounded-md hover:opacity-90 transition-all"
                         >
                             Submit
                         </button>
                     </form>
+
                 </div>
             </div>
         </section>
