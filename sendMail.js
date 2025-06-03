@@ -8,7 +8,7 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-const resend = new Resend("your_actual_resend_api_key");
+const resend = new Resend("re_gikoYoaH_AoV8BuK3rA8isZ55pJtixUnM");
 
 app.get("/", (req, res) => {
     res.send("Server is running");

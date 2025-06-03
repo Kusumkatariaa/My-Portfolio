@@ -16,10 +16,13 @@ function Header() {
                         <a href="#home" className="hover:text-white transition">Home</a>
                     </li>
                     <li>
-                        <a href="#work" className="hover:text-white font-medium">Work</a>
+                        <a href="#about" className="hover:text-white transition">About</a>
                     </li>
                     <li>
-                        <a href="#about" className="hover:text-white transition">About</a>
+                        <a href="#skills" className="hover:text-white font-medium">Skills</a>
+                    </li>
+                    <li>
+                        <a href="#projects" className="hover:text-white font-medium">Projects</a>
                     </li>
                     <li>
                         <a href="#contact" className="hover:text-white transition">Contact</a>
