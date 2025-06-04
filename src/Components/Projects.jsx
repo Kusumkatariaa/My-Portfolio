@@ -44,7 +44,7 @@ const projects = [
     //     image: "/your-images/blood-donation.webp",
     //     github: "#",
     //     demo: "#",
-    // },
+    // }, 
     // {
     //     title: "i Notes Extension",
     //     description:
