@@ -8,7 +8,10 @@ export default {
     extend: {
       animation: {
         'spin-slow': 'spin 8s linear infinite',
-      }
+      },
+      backdropBlur: {
+        sm: '4px',
+      },
     }
   },
   plugins: [],
