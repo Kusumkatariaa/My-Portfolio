@@ -16,7 +16,7 @@ function Contact() {
 
             <div className="max-w-4xl flex-row mx-auto from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] rounded-3xl shadow-lg p-6 sm:p-10 flex md:flex-row items-center gap-10 border border-gray-700">
                 {/* Left - Illustration */}
-                <div className="w-full md:w-1/2">
+                <div className="illustration w-full md:w-1/2">
                     <img
                         src={image} // Replace this with your image import or path
                         alt="Mail Illustration"
@@ -25,7 +25,7 @@ function Contact() {
                 </div>
 
                 {/* Right - Form */}
-                <div className="w-full md:w-1/2">
+                <div className="w-full ">
                     <h3 className="text-2xl font-semibold mb-6">Email Me</h3>
                     <form
                         onSubmit={async (e) => {
@@ -48,6 +48,13 @@ function Contact() {
                         }}
                         className="flex flex-col gap-5"
                     >
+                        <input
+                            type="text"
+                            name="name"
+                            required
+                            placeholder="Your Name"
+                            className="bg-[#1e2633] text-white placeholder-gray-400 p-3 rounded-md border border-gray-600 outline-none focus:ring-2 focus:ring-[#548FBA]"
+                        />
                         <input
                             type="email"
                             name="email"

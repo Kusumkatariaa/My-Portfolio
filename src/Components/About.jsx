@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaGraduationCap, FaBriefcase } from "react-icons/fa";
+import "../Styles/about.css";
 
 const experiences = [
   {
@@ -51,41 +52,46 @@ const education = [
 ];
 
 const TimelineItem = ({ item }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    className="relative pl-10 pb-16"
-  >
-    <div className="flex items-start gap-6 relative z-10">
-      {/* Blue circle above the line */}
-      <div className="w-4 h-4 bg-[#3d8bfd] rounded-full z-10"></div>
+  <><div className="circle w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"></div>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="relative pl-10 pb-16"
+    >
+      {/* <div className="w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"></div> */}
+      <div className="relative z-10">
+        {/* Bullet Circle */}
 
-      {/* Content box */}
-      <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl w-full text-white shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
-        <div className="flex items-center gap-4">
-          {item.icon && (
-            <img
-              src={item.icon}
-              alt="icon"
-              className="w-10 h-10 rounded-full object-cover"
-            />
-          )}
-          <div>
-            <h3 className="text-xl font-semibold">{item.role}</h3>
-            <p className="text-sm font-bold text-white/70">{item.company}</p>
-            <p className="text-sm text-white/50">{item.date}</p>
+
+
+        {/* Content box */}
+        <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl w-full text-white shadow-[0_4px_20px_rgba(255,255,255,0.1)] ml-6">
+          <div className="flex items-center gap-4">
+            {item.icon && (
+              <img
+                src={item.icon}
+                alt="icon"
+                className="w-10 h-10 rounded-full object-cover"
+              />
+            )}
+            <div>
+              <h3 className="text-xl font-semibold">{item.role}</h3>
+              <p className="text-sm font-bold text-white/70">{item.company}</p>
+              <p className="text-sm text-white/50">{item.date}</p>
+            </div>
           </div>
+          <ul className="mt-4 space-y-2 list-disc pl-5 text-sm text-white/90">
+            {item.points.map((point, index) => (
+              <li key={index}>{point}</li>
+            ))}
+          </ul>
         </div>
-        <ul className="mt-4 space-y-2 list-disc pl-5 text-sm text-white/90">
-          {item.points.map((point, index) => (
-            <li key={index}>{point}</li>
-          ))}
-        </ul>
       </div>
-    </div>
-  </motion.div>
+    </motion.div>
+  </>
 );
+
 
 
 const WorkEducation = () => {
@@ -95,7 +101,7 @@ const WorkEducation = () => {
 
       {/* Gradient vertical line for work section */}
       <div className="relative pl-8">
-        <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#3d8bfd] via-[#3d8bfd]/60 to-transparent z-0"></div>
+        <div className="absolute left-[18px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
         {experiences.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}
@@ -105,7 +111,8 @@ const WorkEducation = () => {
 
       {/* Gradient vertical line for education section */}
       <div className="relative pl-8">
-        <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#3d8bfd] via-[#3d8bfd]/60 to-transparent z-0"></div>
+        <div className="absolute left-[18px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
+
         {education.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}
