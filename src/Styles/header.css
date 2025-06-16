@@ -1,0 +1,31 @@
+@media screen and (max-width: 600px) {
+    .nav-menus {
+        display: none;
+    }
+
+    nav {
+        width: 90%;
+    }
+
+    ul.flex.flex-col.gap-8.text-xl.text-white {
+        position: absolute;
+        left: -22px;
+        width: 130%;
+        height: 100vh;
+        top: -140px;
+        padding-left: 41px;
+    }
+
+    ul.flex.flex-col.gap-8.text-xl.text-white {
+        width: 100%;
+        background:
+            color-mix(in oklab, #0f172a 90%, transparent);
+        margin-top: 100px;
+        padding-top: 64px;
+        overflow: hidden;
+    }
+
+    .cross {
+        z-index: 2;
+    }
+}

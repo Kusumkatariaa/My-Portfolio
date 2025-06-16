@@ -1,5 +1,12 @@
 .circle {
     position: relative;
     top: 6px;
-    left: -22px;
+    left: -40px;
+}
+
+@media (max-width: 600px) {
+    .circle {
+        left: -40px;
+        top: 20px;
+    }
 }

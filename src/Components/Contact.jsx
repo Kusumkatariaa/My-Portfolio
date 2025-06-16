@@ -1,20 +1,22 @@
 import React from "react";
 import image from "../assets/images/mail-image.webp"; // Ensure you have the image in the correct path
+import "../Styles/contact.css"; // Import your CSS styles for the contact section
+
 
 function Contact() {
     return (
         <section
             id="contact"
-            className="text-white py-16 px-6 md:px-12"
+            className="text-white py-16 sm:px-6 md:px-12"
         >
             <div className="text-center mb-12">
-                <p className="text-sm text-gray-400">You can text me directly</p>
-                <h2 className="text-4xl font-bold bg-gradient-to-r  bg-clip-text text-transparent">
+                <p className="text-white text-l tracking-wider uppercase mb-5">You can text me directly</p>
+                <h2 className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">
                     Write Me
                 </h2>
             </div>
 
-            <div className="max-w-4xl flex-row mx-auto from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] rounded-3xl shadow-lg p-6 sm:p-10 flex md:flex-row items-center gap-10 border border-gray-700">
+            <div className="max-w-4xl sm:flex-row mx-auto from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] rounded-3xl shadow-lg p-6 sm:p-10 flex xs:flex-col items-center gap-10 border border-gray-700">
                 {/* Left - Illustration */}
                 <div className="illustration w-full md:w-1/2">
                     <img

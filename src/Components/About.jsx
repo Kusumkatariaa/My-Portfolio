@@ -57,7 +57,7 @@ const TimelineItem = ({ item }) => (
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative pl-10 pb-16"
+      className="relative sm:pl-10 pb-16"
     >
       {/* <div className="w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"></div> */}
       <div className="relative z-10">
@@ -66,7 +66,7 @@ const TimelineItem = ({ item }) => (
 
 
         {/* Content box */}
-        <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl w-full text-white shadow-[0_4px_20px_rgba(255,255,255,0.1)] ml-6">
+        <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl w-full text-white shadow-[0_4px_20px_rgba(255,255,255,0.1)] sm:ml-6">
           <div className="flex items-center gap-4">
             {item.icon && (
               <img
@@ -96,22 +96,22 @@ const TimelineItem = ({ item }) => (
 
 const WorkEducation = () => {
   return (
-    <div className="px-6 py-12 max-w-5xl mx-auto">
-      <h2 className="text-4xl font-extrabold text-white mb-8">WORK EXPERIENCE</h2>
+    <div id="about" className="about-main py-12 max-w-7xl mx-auto">
+      <h2 className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">WORK EXPERIENCE</h2>
 
       {/* Gradient vertical line for work section */}
       <div className="relative pl-8">
-        <div className="absolute left-[18px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
+        <div className="absolute sm:left-[18px] left-[0px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
         {experiences.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}
       </div>
 
-      <h2 className="text-4xl font-extrabold text-white mt-20 mb-8">EDUCATION</h2>
+      <h2 className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mt-10 mb-10">EDUCATION</h2>
 
       {/* Gradient vertical line for education section */}
       <div className="relative pl-8">
-        <div className="absolute left-[18px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
+        <div className="absolute sm:left-[18px] left-[0px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
 
         {education.map((item, index) => (
           <TimelineItem key={index} item={item} />

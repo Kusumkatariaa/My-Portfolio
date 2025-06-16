@@ -115,9 +115,9 @@ const ProjectCard = ({ project }) => {
                         ))}
                     </div>
                     <div className="flex gap-4">
-                        <a href={project.github} target="_blank" rel="noreferrer">
+                        {/* <a href={project.github} target="_blank" rel="noreferrer">
                             <FaGithub className="text-2xl hover:text-[#548FBA]" />
-                        </a>
+                        </a> */}
                         <a href={project.demo} target="_blank" rel="noreferrer">
                             <FiExternalLink className="text-2xl hover:text-[#548FBA]" />
                         </a>
@@ -131,12 +131,12 @@ const ProjectCard = ({ project }) => {
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-20 px-6">
+        <section id="projects" className="py-20 max-w-7xl mx-auto">
             <div className="text-center mb-12">
-                <p className="text-gray-400 text-sm tracking-wider uppercase">
+                <p className="text-white text-l tracking-wider uppercase mb-5">
                     Have a look at
                 </p>
-                <h2 className="text-4xl font-bold text-white">My Projects</h2>
+                <h2 className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">My Projects</h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {projects.map((project, index) => (

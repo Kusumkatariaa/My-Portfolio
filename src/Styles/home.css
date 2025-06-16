@@ -1,0 +1,31 @@
+.main-head {
+    font-size: 65px;
+    line-height: 1.1;
+}
+
+.home-main-section {
+    height: 100vh;
+}
+
+@media screen and (max-width: 600px) {
+    .main-head {
+        font-size: 35px;
+        line-height: 1;
+    }
+
+    .mb-6 {
+        margin-bottom: 1rem;
+    }
+
+    .mt-6 {
+        margin-bottom: 1rem;
+    }
+
+    .leading-relaxed {
+        line-height: 1.2;
+    }
+
+    .home-main-section {
+        padding-top: 120px;
+    }
+}

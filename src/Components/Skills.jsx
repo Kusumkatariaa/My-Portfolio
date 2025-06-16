@@ -37,18 +37,18 @@ const Skills = () => {
     return (
         <section id="skills" className="py-16 px-6 md:px-12">
             <div className="text-center mb-12">
-                <p className="text-gray-400 text-sm tracking-wider uppercase">Skills And Technologies</p>
+                <p className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">Skills And Technologies</p>
             </div>
 
-            <div className="flex justify-center items-center w-full gap-9 flex-wrap max-w-4xl mx-auto">
+            <div className="flex justify-center items-center w-full gap-6 sm:gap-9 flex-wrap max-w-4xl mx-auto">
                 {/* Map through the skills array to display each skill */}
                 {skills.map((skill, index) => (
                     <div
                         key={index}
                         className="flex flex-col items-center px-6 py-4 rounded-xl hover:scale-105 transition-transform duration-300 shadow-md hover:shadow-blue-500/30"
                     >
-                        <img src={skill.icon} alt={skill.name} className="w-16 h-16 mb-2" />
-                        <p className="text-white text-xl">{skill.name}</p>
+                        <img src={skill.icon} alt={skill.name} className="w-8 h-8 sm:w-16 sm:h-16 mb-2" />
+                        <p className="text-white sm:text-xl">{skill.name}</p>
                     </div>
                 ))}
             </div>
