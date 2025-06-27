@@ -8,3 +8,21 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Add this in your App.css or global CSS */
+.gsap-marker-start,
+.gsap-marker-end,
+.gsap-marker-scroller-start,
+.gsap-marker-scroller-end {
+  z-index: 9999 !important;
+  font-size: 12px;
+  color: white;
+  background: red;
+  padding: 2px;
+}
+
+.gsap-marker-start,
+.gsap-marker-end {
+  display: block !important;
+  z-index: 9999 !important;
+}

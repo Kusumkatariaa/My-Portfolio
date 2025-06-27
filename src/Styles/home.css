@@ -7,6 +7,52 @@
     height: 100vh;
 }
 
+/* ---------- waving-hand animation ---------- */
+@keyframes wave {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    15% {
+        transform: rotate(14deg);
+    }
+
+    30% {
+        transform: rotate(-8deg);
+    }
+
+    45% {
+        transform: rotate(12deg);
+    }
+
+    60% {
+        transform: rotate(-4deg);
+    }
+
+    75% {
+        transform: rotate(8deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* base emoji style */
+.wave-emoji {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    /* wrist pivot */
+}
+
+/* added by GSAP on header finish */
+.animate-wave {
+    animation: wave 1s ease-in-out 2 forwards;
+
+    /* plays once, 2 s */
+}
+
+
 @media screen and (max-width: 600px) {
     .main-head {
         font-size: 35px;

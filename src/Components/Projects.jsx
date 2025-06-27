@@ -4,8 +4,45 @@ import { FiExternalLink } from "react-icons/fi";
 import dandyVideo from "../assets/videos/dandy.mp4";
 import revaGrowthVideo from "../assets/videos/reva-growth.mp4";
 import blumeLightVideo from "../assets/videos/blumelight-video.mp4";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+
 
 const projects = [
+    {
+        title: "Blood Donation Website",
+        description:
+            "A web platform designed to connect blood donors with recipients efficiently. Users can create an account, input their blood type and location, and receive notifications when a matching recipient requires a donation.",
+        tech: ["React JS", "Node JS", "Mongo DB"],
+        image: "/your-images/blood-donation.webp",
+        video: dandyVideo,
+        github: "#",
+        demo: "#",
+    },
+    {
+        title: "Blood Donation Website",
+        description:
+            "A web platform designed to connect blood donors with recipients efficiently. Users can create an account, input their blood type and location, and receive notifications when a matching recipient requires a donation.",
+        tech: ["React JS", "Node JS", "Mongo DB"],
+        image: "/your-images/blood-donation.webp",
+        video: revaGrowthVideo,
+        github: "#",
+        demo: "#",
+    },
+    {
+        title: "Blood Donation Website",
+        description:
+            "A web platform designed to connect blood donors with recipients efficiently. Users can create an account, input their blood type and location, and receive notifications when a matching recipient requires a donation.",
+        tech: ["React JS", "Node JS", "Mongo DB"],
+        image: "/your-images/blood-donation.webp",
+        video: blumeLightVideo,
+        github: "#",
+        demo: "#",
+    },
     {
         title: "Blood Donation Website",
         description:
@@ -130,6 +167,8 @@ const ProjectCard = ({ project }) => {
 
 
 const Projects = () => {
+
+
     return (
         <section id="projects" className="py-20 max-w-7xl mx-auto">
             <div className="text-center mb-12">
@@ -138,7 +177,7 @@ const Projects = () => {
                 </p>
                 <h2 className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">My Projects</h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="flex gap-10">
                 {projects.map((project, index) => (
                     <ProjectCard key={index} project={project} />
                 ))}

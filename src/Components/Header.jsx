@@ -1,58 +1,104 @@
-import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../Styles/header.css"; // Ensure you have this CSS file for styles
+import gsap from "gsap";
+import React, { useState, useRef, useLayoutEffect } from "react";
 
-function Header() {
+function Header({ onHeaderAnimationComplete }) {
     const [menuOpen, setMenuOpen] = useState(false);
-
+    const logoRef = useRef(null);
+    const menuRef = useRef(null);
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const closeMenu = () => setMenuOpen(false);
 
+    useLayoutEffect(() => {
+        // 0) guard: don’t run if refs aren’t ready
+        if (!logoRef.current || !menuRef.current) return;
+
+        // 1) create a GSAP context scoped to your menu container
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline({
+                defaults: { ease: "power2.out" },
+                onComplete: () => {
+                    // Call the function passed as prop when animation completes
+                    if (onHeaderAnimationComplete) {
+                        onHeaderAnimationComplete();
+                    }
+
+                    // ➜ fire the 2-second wave after header animation
+                    document
+                        .querySelector(".wave-emoji")
+                        ?.classList.add("animate-wave");
+                },
+            });
+
+            // 3) logo animation
+            tl.from(logoRef.current, {
+                y: -30,
+                autoAlpha: 0,
+                duration: 0.8,
+                ease: "power2.out",
+            });
+
+            // 4) collect all menu links and stagger them
+            const links = gsap.utils.toArray(
+                menuRef.current.querySelectorAll("a")
+            );
+            tl.from(
+                links,
+                {
+                    y: -10,
+                    autoAlpha: 0,
+                    duration: 0.3,
+                    stagger: 0.4,
+                    ease: "power2.out",
+                    overwrite: true,
+                    clearProps: "all",
+                },
+                ">" // start after the logo tween finishes
+            );
+        }, menuRef); // <–– scope the context to the menuRef element
+
+        // 5) cleanup on unmount
+        return () => ctx.revert();
+    }, [onHeaderAnimationComplete]); // Dependency on the passed function
+
     return (
-        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 sm:w-[89%] z-50 ">
+        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 sm:w-[89%] z-50">
             <div className="backdrop-blur-0 bg-white/10 shadow-md rounded-2xl px-6 py-4 flex justify-between items-center text-white max-w-7xl mx-auto">
                 {/* Logo */}
-                <a id="header-logo" href="#" className="text-2xl font-bold text-white">K.</a>
+                <a
+                    ref={logoRef}
+                    id="header-logo"
+                    href="#"
+                    className="will-change-transform text-2xl font-bold text-white"
+                >
+                    K.
+                </a>
 
                 {/* Desktop Links */}
-                <ul className="nav-menus md:flex space-x-8 text-sm text-gray-300">
-                    <li>
-                        <a
-                            href="#home"
-                            className="text-white transition-all duration-300 ease-in-out cursor-pointer hover:text-white"
-                        >
+                <ul ref={menuRef} className="nav-menus md:flex space-x-8 text-sm text-gray-300">
+                    <li  >
+                        <a href="#home" className="text-white transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
                             Home
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="#about"
-                            className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white"
-                        >
+                        <a href="#about" className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
                             About
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="#skills"
-                            className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white"
-                        >
+                        <a href="#skills" className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
                             Skills
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="#projects"
-                            className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white"
-                        >
+                        <a href="#projects" className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
                             Projects
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="#contact"
-                            className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white"
-                        >
+                        <a href="#contact" className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
                             Contact
                         </a>
                     </li>

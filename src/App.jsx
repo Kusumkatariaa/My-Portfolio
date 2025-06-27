@@ -10,11 +10,17 @@ import Skills from './Components/Skills'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [triggerHomeAnimation, setTriggerHomeAnimation] = useState(false);  // <-- NEW STATE
+
+  const handleHeaderAnimationComplete = () => {  // <-- NEW FUNCTION
+    // Trigger the Home component's animation
+    setTriggerHomeAnimation(true);
+  };
 
   return (
     <>
-      <Header />
-      <Home />
+      <Header onHeaderAnimationComplete={handleHeaderAnimationComplete} />  {/* <-- Pass function */}
+      <Home triggerHomeAnimation={triggerHomeAnimation} />  {/* <-- Pass state */}
       <About />
       <Skills />
       <Projects />
