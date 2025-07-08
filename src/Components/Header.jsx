@@ -7,31 +7,30 @@ function Header({ onHeaderAnimationComplete }) {
     const [menuOpen, setMenuOpen] = useState(false);
     const logoRef = useRef(null);
     const menuRef = useRef(null);
+    const hasAnimated = useRef(false); // 🔁 <-- Add this line
+
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const closeMenu = () => setMenuOpen(false);
 
     useLayoutEffect(() => {
-        // 0) guard: don’t run if refs aren’t ready
-        if (!logoRef.current || !menuRef.current) return;
+        if (!logoRef.current || !menuRef.current || hasAnimated.current) return;
 
-        // 1) create a GSAP context scoped to your menu container
+        hasAnimated.current = true; // ✅ <-- Prevent re-running
+
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({
                 defaults: { ease: "power2.out" },
                 onComplete: () => {
-                    // Call the function passed as prop when animation completes
                     if (onHeaderAnimationComplete) {
                         onHeaderAnimationComplete();
                     }
 
-                    // ➜ fire the 2-second wave after header animation
                     document
                         .querySelector(".wave-emoji")
                         ?.classList.add("animate-wave");
                 },
             });
 
-            // 3) logo animation
             tl.from(logoRef.current, {
                 y: -30,
                 autoAlpha: 0,
@@ -39,28 +38,27 @@ function Header({ onHeaderAnimationComplete }) {
                 ease: "power2.out",
             });
 
-            // 4) collect all menu links and stagger them
             const links = gsap.utils.toArray(
                 menuRef.current.querySelectorAll("a")
             );
+
             tl.from(
                 links,
                 {
                     y: -10,
                     autoAlpha: 0,
                     duration: 0.3,
-                    stagger: 0.4,
+                    stagger: 0.2,
                     ease: "power2.out",
                     overwrite: true,
                     clearProps: "all",
                 },
-                ">" // start after the logo tween finishes
+                ">" // Start after logo animation
             );
-        }, menuRef); // <–– scope the context to the menuRef element
+        }, menuRef);
 
-        // 5) cleanup on unmount
         return () => ctx.revert();
-    }, [onHeaderAnimationComplete]); // Dependency on the passed function
+    }, [onHeaderAnimationComplete]);
 
     return (
         <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 sm:w-[89%] z-50">

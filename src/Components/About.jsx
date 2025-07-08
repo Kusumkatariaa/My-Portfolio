@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
-import { FaGraduationCap, FaBriefcase } from "react-icons/fa";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../Styles/about.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
@@ -14,9 +17,9 @@ const experiences = [
       "Collaborated with a senior frontend engineer to develop various application screens, streamlining development and collaboration using GitHub.",
       "Worked on a Learning Management System fixing bugs on the frontend while adding and improving features in tandem with the backend developer using Bootstrap and React Bootstrap.",
       "Integrated seven endpoints in the RBAC module of a Revenue Assurance application ensuring CRUD operations could be easily performed by the admin.",
-      "Developed HTML Templates for partner companies including the financial firm KPMG."
+      "Developed HTML Templates for partner companies including the financial firm KPMG.",
     ],
-    icon: "/icons/bluechip.png"
+    icon: "/icons/bluechip.png",
   },
   {
     role: "Intern",
@@ -25,10 +28,10 @@ const experiences = [
     points: [
       "Came up with cross functional login & sign up page designs that are now integral parts of the tools used within the company.",
       "Led a team of fellow interns to design various templates and UI components common in internal applications such as dashboards, notification tabs, multi–step forms, tables with pagination etc.",
-      "Also helped interns grasp the basics of design enabling them to make meaningful contributions."
+      "Also helped interns grasp the basics of design enabling them to make meaningful contributions.",
     ],
-    icon: "/icons/nnpc.png"
-  }
+    icon: "/icons/nnpc.png",
+  },
 ];
 
 const education = [
@@ -38,34 +41,63 @@ const education = [
     date: "2022 – Present",
     points: [
       "Acquired comprehensive knowledge in computer science and information technology.",
-      "Enhanced skills in software development, passed with 3.06 CGPA."
-    ]
+      "Enhanced skills in software development, passed with 3.06 CGPA.",
+    ],
   },
   {
     role: "Mern Stack Certification - 2022",
     company: "Next Bridge, Lahore, Pakistan",
     date: "2022",
     points: [
-      "Learned advanced mern-stack, leveraging industry best practices to create dynamic and interactive web applications."
-    ]
-  }
+      "Learned advanced mern-stack, leveraging industry best practices to create dynamic and interactive web applications.",
+    ],
+  },
 ];
 
-const TimelineItem = ({ item }) => (
-  <><div className="circle w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"></div>
+const TimelineItem = ({ item }) => {
+  const circleRef = useRef(null);
+  const itemRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (!circleRef.current || !itemRef.current) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        circleRef.current,
+        { top: "60%" },
+        {
+          top: "5%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: itemRef.current,
+            start: "top bottom",  // When item enters the bottom of the screen
+            end: "top center",    // When item reaches center
+            scrub: true,
+          },
+        }
+      );
+    }, itemRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
     <motion.div
+      ref={itemRef}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       className="relative sm:pl-10 pb-16"
     >
-      {/* <div className="w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"></div> */}
+      {/* ⬇️ Move the circle inside this relative container */}
+      <div
+        ref={circleRef}
+        className="absolute left-[-10px] sm:left-[0px] w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"
+        style={{ top: "60%" }} // Initial position
+      ></div>
+
+      {/* Timeline Card */}
       <div className="relative z-10">
-        {/* Bullet Circle */}
-
-
-
-        {/* Content box */}
         <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl w-full text-white shadow-[0_4px_20px_rgba(255,255,255,0.1)] sm:ml-6">
           <div className="flex items-center gap-4">
             {item.icon && (
@@ -89,30 +121,31 @@ const TimelineItem = ({ item }) => (
         </div>
       </div>
     </motion.div>
-  </>
-);
-
-
+  );
+};
 
 const WorkEducation = () => {
   return (
     <div id="about" className="about-main py-12 max-w-7xl mx-auto">
-      <h2 className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">WORK EXPERIENCE</h2>
+      <h2 className="uppercase text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">
+        WORK EXPERIENCE
+      </h2>
 
-      {/* Gradient vertical line for work section */}
+      {/* Timeline - Work */}
       <div className="relative pl-8">
-        <div className="absolute sm:left-[18px] left-[0px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
+        <div className="absolute sm:left-[18px] left-[30px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
         {experiences.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}
       </div>
 
-      <h2 className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mt-10 mb-10">EDUCATION</h2>
+      <h2 className="uppercase text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mt-10 mb-10">
+        EDUCATION
+      </h2>
 
-      {/* Gradient vertical line for education section */}
+      {/* Timeline - Education */}
       <div className="relative pl-8">
-        <div className="absolute sm:left-[18px] left-[0px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
-
+        <div className="absolute sm:left-[18px] left-[30px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
         {education.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}
@@ -120,7 +153,5 @@ const WorkEducation = () => {
     </div>
   );
 };
-
-
 
 export default WorkEducation;
