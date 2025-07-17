@@ -32,24 +32,29 @@ function Contact() {
                     <form
                         onSubmit={async (e) => {
                             e.preventDefault();
+
+                            const name = e.target.name.value;
                             const email = e.target.email.value;
                             const message = e.target.message.value;
 
                             const res = await fetch("http://localhost:5000/api/send", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ email, message }),
+                                body: JSON.stringify({ name, email, message }),
                             });
-
+                            const data = await res.json(); // 🟢 ADD THIS
+                            console.log("Server response:", data); // 🟢 ADD THIS
                             if (res.ok) {
-                                alert("Message sent successfully!");
+                                alert("✅ Message sent successfully!");
                                 e.target.reset();
                             } else {
-                                alert("Failed to send message.");
+                                alert("❌ Failed to send message: " + data.error);
                             }
                         }}
+
                         className="flex flex-col gap-5"
                     >
+
                         <input
                             type="text"
                             name="name"
