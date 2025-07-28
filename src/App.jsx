@@ -6,7 +6,7 @@ import About from './Components/About'
 import Contact from './Components/Contact'
 import Projects from './Components/Projects'
 import CustomCursor from './Components/CustomCursor'
-// import './index.css'
+import './index.css'
 import Skills from './Components/Skills'
 
 function App() {
