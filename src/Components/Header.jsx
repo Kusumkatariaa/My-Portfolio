@@ -61,7 +61,7 @@ function Header({ onHeaderAnimationComplete }) {
     }, [onHeaderAnimationComplete]);
 
     return (
-        <nav className="fixed top-10 left-1/2  sm:w-[89%] z-50">
+        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 sm:w-[89%] z-50">
             <div className="backdrop-blur-0 bg-white/10 shadow-md rounded-2xl px-6 py-4 flex justify-between items-center text-white max-w-7xl mx-auto">
                 {/* Logo */}
                 <a

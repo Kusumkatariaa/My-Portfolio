@@ -34,11 +34,12 @@ function Contact() {
                             e.preventDefault();
                             const email = e.target.email.value;
                             const message = e.target.message.value;
+                            const name = e.target.name.value;
 
                             const res = await fetch("http://localhost:5000/api/send", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ email, message }),
+                                body: JSON.stringify({ name, email, message }),
                             });
 
                             if (res.ok) {
