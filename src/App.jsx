@@ -5,7 +5,8 @@ import Home from './Components/Home'
 import About from './Components/About'
 import Contact from './Components/Contact'
 import Projects from './Components/Projects'
-import './index.css'
+import CustomCursor from './Components/CustomCursor'
+// import './index.css'
 import Skills from './Components/Skills'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <>
+      <CustomCursor />
       <Header onHeaderAnimationComplete={handleHeaderAnimationComplete} />  {/* <-- Pass function */}
       <Home triggerHomeAnimation={triggerHomeAnimation} />  {/* <-- Pass state */}
       <About />

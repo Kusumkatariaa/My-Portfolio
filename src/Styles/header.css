@@ -1,3 +1,7 @@
+nav {
+    transform: translateX(-50%);
+}
+
 @media screen and (max-width: 600px) {
     .nav-menus {
         display: none;
