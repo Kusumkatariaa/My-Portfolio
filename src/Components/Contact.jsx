@@ -12,7 +12,7 @@ function Contact() {
             <div className="text-center mb-12">
                 <p className="text-white text-l tracking-wider uppercase mb-5">You can text me directly</p>
                 <h2 className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">
-                    Write Me
+                    Connect With Me
                 </h2>
             </div>
 
@@ -28,7 +28,7 @@ function Contact() {
 
                 {/* Right - Form */}
                 <div className="w-full ">
-                    <h3 className="text-2xl font-semibold mb-6">Email Me</h3>
+                    {/* <h3 className="text-2xl font-semibold mb-6">Email Me</h3> */}
                     <form
                         onSubmit={async (e) => {
                             e.preventDefault();

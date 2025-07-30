@@ -1,6 +1,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import KusumProfile from "../assets/images/kusum.jpeg";
 import "../Styles/home.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -93,7 +94,7 @@ function Home({ triggerHomeAnimation }) {
     }, [triggerHomeAnimation]);
 
     return (
-        <div id="home" className="home-main-section sm:pt-[270px] flex justify-center mx-auto">
+        <section id="home" className="home-main-section sm:pt-[270px] flex justify-center mx-auto">
             <div className="grid sm:grid-cols-2 max-w-7xl w-full gap-8">
                 {/* Text Section */}
                 <div className="text-white max-w-2xl w-full">
@@ -138,14 +139,14 @@ function Home({ triggerHomeAnimation }) {
                     >
                         <img
                             ref={imageRef}
-                            src="https://avatars.githubusercontent.com/u/100646626?v=4"
+                            src={KusumProfile}
                             alt="Kusum Kataria"
                             className="w-80 h-96 object-cover rounded-[20px] -rotate-3"
                         />
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

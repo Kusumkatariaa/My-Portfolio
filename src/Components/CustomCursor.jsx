@@ -1,33 +1,49 @@
-// src/components/CustomCursor.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from 'react';
 
 const CustomCursor = () => {
-    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const innerRef = useRef(null);
+    const outerRef = useRef(null);
 
     useEffect(() => {
-        const addMouseListeners = (e) => {
-            setPosition({ x: e.clientX, y: e.clientY });
-        };
+        const inner = innerRef.current;
+        const outer = outerRef.current;
+        let mouseX = -100, mouseY = -100;
+        let outerX = -100, outerY = -100;
 
-        window.addEventListener("mousemove", addMouseListeners);
-        return () => window.removeEventListener("mousemove", addMouseListeners);
+        const onMouseMove = (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            inner.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        };
+        document.addEventListener('mousemove', onMouseMove);
+
+        const render = () => {
+            outerX += (mouseX - outerX) * 0.15;
+            outerY += (mouseY - outerY) * 0.15;
+            outer.style.transform = `translate(${outerX}px, ${outerY}px)`;
+            requestAnimationFrame(render);
+        };
+        requestAnimationFrame(render);
+
+        return () => document.removeEventListener('mousemove', onMouseMove);
     }, []);
 
-    const cursorStyle = {
-        position: "fixed",
-        top: position.y,
-        left: position.x,
-        transform: "translate(-50%, -50%)",
-        width: "20px",
-        height: "20px",
-        backgroundColor: "black", // Change this to match your theme
-        borderRadius: "50%",
-        pointerEvents: "none",
-        zIndex: 9999,
-        mixBlendMode: "difference", // Optional for cool effect
-    };
+    return (
+        <>
+            <div
+                ref={outerRef}
+                className="pointer-events-none fixed top-0 left-0 w-4 h-4 bg-red-500 rounded-full mix-blend-difference z-[9999]"
+                style={{ transform: 'translate(-100px, -100px)' }}
+            />
 
-    return <div style={cursorStyle}></div>;
+
+            <div
+                ref={innerRef}
+                className="pointer-events-none fixed top-0 left-0 w-8 h-8 bg-white rounded-full mix-blend-difference z-[9999] transition-transform duration-100 ease-out"
+                style={{ transform: 'translate(-100px, -100px)' }}
+            />
+        </>
+    );
 };
 
 export default CustomCursor;

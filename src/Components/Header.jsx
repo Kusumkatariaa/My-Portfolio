@@ -1,13 +1,14 @@
 import { FaBars, FaTimes } from "react-icons/fa";
-import "../Styles/header.css"; // Ensure you have this CSS file for styles
+import "../Styles/header.css";
 import gsap from "gsap";
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 
 function Header({ onHeaderAnimationComplete }) {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
     const logoRef = useRef(null);
     const menuRef = useRef(null);
-    const hasAnimated = useRef(false); // 🔁 <-- Add this line
+    const hasAnimated = useRef(false);
 
     const toggleMenu = () => setMenuOpen(!menuOpen);
     const closeMenu = () => setMenuOpen(false);
@@ -15,7 +16,7 @@ function Header({ onHeaderAnimationComplete }) {
     useLayoutEffect(() => {
         if (!logoRef.current || !menuRef.current || hasAnimated.current) return;
 
-        hasAnimated.current = true; // ✅ <-- Prevent re-running
+        hasAnimated.current = true;
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({
@@ -25,9 +26,7 @@ function Header({ onHeaderAnimationComplete }) {
                         onHeaderAnimationComplete();
                     }
 
-                    document
-                        .querySelector(".wave-emoji")
-                        ?.classList.add("animate-wave");
+                    document.querySelector(".wave-emoji")?.classList.add("animate-wave");
                 },
             });
 
@@ -38,9 +37,7 @@ function Header({ onHeaderAnimationComplete }) {
                 ease: "power2.out",
             });
 
-            const links = gsap.utils.toArray(
-                menuRef.current.querySelectorAll("a")
-            );
+            const links = gsap.utils.toArray(menuRef.current.querySelectorAll("a"));
 
             tl.from(
                 links,
@@ -53,12 +50,53 @@ function Header({ onHeaderAnimationComplete }) {
                     overwrite: true,
                     clearProps: "all",
                 },
-                ">" // Start after logo animation
+                ">"
             );
         }, menuRef);
 
         return () => ctx.revert();
     }, [onHeaderAnimationComplete]);
+
+    // IntersectionObserver to track current section
+    useEffect(() => {
+        const sections = document.querySelectorAll("section");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                let maxRatio = 0;
+                let mostVisibleSectionId = null;
+
+                entries.forEach((entry) => {
+                    if (entry.intersectionRatio > maxRatio) {
+                        maxRatio = entry.intersectionRatio;
+                        mostVisibleSectionId = entry.target.id;
+                    }
+                });
+
+                if (mostVisibleSectionId) {
+                    setActiveSection(mostVisibleSectionId);
+                }
+            },
+            {
+                threshold: Array.from({ length: 101 }, (_, i) => i / 100),
+            }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+
+        return () => {
+            sections.forEach((section) => observer.unobserve(section));
+        };
+    }, []);
+
+
+
+
+    const linkClass = (id) =>
+        `transition-all duration-300 ease-in-out cursor-pointer 
+   hover:text-white text-gray-300 hover:font-bold
+   ${activeSection === id ? "text-white font-bold" : ""}`;
+
 
     return (
         <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 sm:w-[89%] z-50">
@@ -74,31 +112,21 @@ function Header({ onHeaderAnimationComplete }) {
                 </a>
 
                 {/* Desktop Links */}
-                <ul ref={menuRef} className="nav-menus md:flex space-x-8 text-sm text-gray-300">
-                    <li  >
-                        <a href="#home" className="text-white transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
-                            Home
-                        </a>
+                <ul ref={menuRef} className="nav-menus md:flex space-x-8 text-sm text-gray-300 hidden md:flex">
+                    <li>
+                        <a href="#home" className={linkClass("home")}>Home</a>
                     </li>
                     <li>
-                        <a href="#about" className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
-                            About
-                        </a>
+                        <a href="#about" className={linkClass("about")}>About</a>
                     </li>
                     <li>
-                        <a href="#skills" className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
-                            Skills
-                        </a>
+                        <a href="#skills" className={linkClass("skills")}>Skills</a>
                     </li>
                     <li>
-                        <a href="#projects" className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
-                            Projects
-                        </a>
+                        <a href="#projects" className={linkClass("projects")}>Projects</a>
                     </li>
                     <li>
-                        <a href="#contact" className="transition-all duration-300 ease-in-out cursor-pointer hover:text-white">
-                            Contact
-                        </a>
+                        <a href="#contact" className={linkClass("contact")}>Contact</a>
                     </li>
                 </ul>
 
@@ -118,11 +146,11 @@ function Header({ onHeaderAnimationComplete }) {
                         <FaTimes />
                     </button>
                     <ul className="flex flex-col gap-8 text-xl text-white">
-                        <li><a href="#home" onClick={closeMenu}>Home</a></li>
-                        <li><a href="#about" onClick={closeMenu}>About</a></li>
-                        <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
-                        <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
-                        <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+                        <li><a href="#home" className={linkClass("home")} onClick={closeMenu}>Home</a></li>
+                        <li><a href="#about" className={linkClass("about")} onClick={closeMenu}>About</a></li>
+                        <li><a href="#skills" className={linkClass("skills")} onClick={closeMenu}>Skills</a></li>
+                        <li><a href="#projects" className={linkClass("projects")} onClick={closeMenu}>Projects</a></li>
+                        <li><a href="#contact" className={linkClass("contact")} onClick={closeMenu}>Contact</a></li>
                     </ul>
                 </div>
             )}

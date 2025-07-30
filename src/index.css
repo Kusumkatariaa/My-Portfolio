@@ -70,12 +70,39 @@ button:focus-visible {
 @tailwind components;
 @tailwind utilities;
 
+/* .custom-cursor {
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out;
+} */
 
+.hover-grow-trigger:hover~.inner-cursor {
+  transform: scale(1.5) translate(-50%, -50%);
+}
+
+.hover-grow-trigger:hover~.outer-cursor {
+  transform: scale(1.2) translate(-50%, -50%);
+}
+
+body {
+  cursor: none;
+}
+
+/* 
+a:hover~.custom-cursor,
+button:hover~.custom-cursor {
+  transform: translate(-50%, -50%) scale(2);
+} */
 
 body {
   height: 100vh;
-  background: #0a2742;
+  /* background: #0a2742; */
   font-family: "Kumbh Sans", sans-serif;
+  background: black;
+}
+
+section {
+  min-height: 100vh;
+  scroll-margin-top: 120px;
 }
 
 

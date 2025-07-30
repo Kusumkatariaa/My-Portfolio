@@ -126,7 +126,7 @@ const TimelineItem = ({ item }) => {
 
 const WorkEducation = () => {
   return (
-    <div id="about" className="about-main py-12 max-w-7xl mx-auto">
+    <section id="about" className="about-main py-12 max-w-7xl mx-auto">
       <h2 className="uppercase text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">
         WORK EXPERIENCE
       </h2>
@@ -150,7 +150,7 @@ const WorkEducation = () => {
           <TimelineItem key={index} item={item} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
