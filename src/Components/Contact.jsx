@@ -18,7 +18,7 @@ function Contact() {
 
             <div className="max-w-4xl sm:flex-row mx-auto from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] rounded-3xl shadow-lg p-6 sm:p-10 flex xs:flex-col items-center gap-10 border border-gray-700">
                 {/* Left - Illustration */}
-                <div className="illustration w-full md:w-1/2">
+                <div className="illustration w-full">
                     <img
                         src={image} // Replace this with your image import or path
                         alt="Mail Illustration"

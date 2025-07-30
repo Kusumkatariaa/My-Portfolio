@@ -100,7 +100,7 @@ function Home({ triggerHomeAnimation }) {
                     <p
                         ref={greetingRef}
                         style={{ opacity: 0 }}
-                        className="text-white/60 text-xl smm:text-2xl mb-16 smm:mb-0 lg:text-3xl col-span-6"
+                        className="text-white/60 text-xl smm:text-2xl mb-8 md:mb-10 smm:mb-0 lg:text-3xl col-span-6"
                     >
                         Hey, there <span className="wave-emoji inline-block">👋🏾</span>
                     </p>
@@ -108,10 +108,12 @@ function Home({ triggerHomeAnimation }) {
                     <div ref={textRef1} className="top-text-wrapper" style={{ opacity: 0 }}>
                         <h1 className="main-head text-left text-white/60 text-3xl sm:text-4xl font-bold leading-tight mb-2">
                             I'm&nbsp;
-                            <span className="bg-linear-to-br bg-clip-text text-transparent from-[#7CC0C4] via-[#548FBA] to-[#3C84C7]">
+                            <span className="gradient-text">
                                 Kusum&nbsp;Kataria
                             </span>
+
                         </h1>
+
                         <h2 className="main-head text-left text-3xl sm:text-4xl font-bold mb-4">
                             a&nbsp;<span className="text-white">Software&nbsp;Engineer</span>
                         </h2>

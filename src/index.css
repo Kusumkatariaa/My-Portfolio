@@ -71,6 +71,7 @@ button:focus-visible {
 @tailwind utilities;
 
 
+
 body {
   height: 100vh;
   background: #0a2742;

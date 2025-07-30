@@ -48,7 +48,7 @@ const projects = [
 
 const ProjectCard = ({ project }) => {
     return (
-        <div className="min-w-[200px] w-[40vw] md:w-[30vw] bg-gradient-to-br from-[#12141c] to-[#1d1f29] border border-gray-800 rounded-xl overflow-hidden shadow-lg">
+        <div className="min-w-[375px] w-[40vw] md:w-[34vw] bg-gradient-to-br from-[#12141c] to-[#1d1f29] border border-gray-800 rounded-xl overflow-hidden shadow-lg">
             <div className="relative group overflow-hidden">
                 <video
                     src={project.video}
@@ -56,7 +56,7 @@ const ProjectCard = ({ project }) => {
                     loop
                     muted
                     playsInline
-                    className="w-full h-96 md:h-[22rem] object-cover"
+                    className="w-full h-[18rem] md:h-[22rem] object-cover"
 
                 />
                 <div className="absolute inset-0 bg-black/70 text-white opacity-0 group-hover:opacity-100 transition-all flex flex-col justify-center items-center px-5 text-center">
@@ -120,7 +120,7 @@ const Projects = () => {
     }, []);
 
     return (
-        <section id="projects" className="bg-[#0c2a43] py-32">
+        <section id="projects" className="py-32">
             {/* Static Heading */}
             <div ref={headingRef} className="text-center mb-10">
                 <p className="text-white text-l tracking-wider uppercase mb-2">
@@ -138,7 +138,7 @@ const Projects = () => {
             >
                 <div
                     ref={scrollContentRef}
-                    className="flex w-max gap-10 px-10"
+                    className="flex w-max gap-10 md:px-10"
                 >
                     {projects.map((project, index) => (
                         <ProjectCard key={index} project={project} />

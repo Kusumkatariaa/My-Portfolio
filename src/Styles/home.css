@@ -7,6 +7,12 @@
     height: 100vh;
 }
 
+.gradient-text {
+    background: linear-gradient(to bottom right, #7CC0C4, #548FBA, #3C84C7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* ---------- waving-hand animation ---------- */
 @keyframes wave {
     0% {

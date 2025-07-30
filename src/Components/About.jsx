@@ -3,57 +3,57 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../Styles/about.css";
+import techinfiniIcon from "../assets/images/techinfini.webp"
 
 gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
-    role: "Software Engineer",
-    company: "Bluechip Technologies | Internship",
-    date: "Mar 2024 – Sept 2024",
+    role: "Associate Software Engineer",
+    company: "TechInfini Solutions Pvt. Ltd.",
+    date: "Dec 2023 – Present",
     points: [
-      "Developed fully responsive sidebars for an API marketplace web app utilizing ChakraUI for context menus, mobile drawer menus, and modals.",
-      "Built a reusable table component that reduced code by 15%, improving code efficiency and maintainability.",
-      "Collaborated with a senior frontend engineer to develop various application screens, streamlining development and collaboration using GitHub.",
-      "Worked on a Learning Management System fixing bugs on the frontend while adding and improving features in tandem with the backend developer using Bootstrap and React Bootstrap.",
-      "Integrated seven endpoints in the RBAC module of a Revenue Assurance application ensuring CRUD operations could be easily performed by the admin.",
-      "Developed HTML Templates for partner companies including the financial firm KPMG.",
+      "Developed and maintained over 80 eCommerce websites using Shopify, focusing on scalable storefronts and customized themes.",
+      "Integrated various Shopify apps such as subscription carts, review systems, and upsell tools to enhance store functionality.",
+      "Built responsive, SEO-friendly, and performance-optimized storefronts using Liquid, HTML/CSS, and Shopify APIs.",
+      "Improved Core Web Vitals and site performance through lazy loading, asset optimization, and accessibility fixes.",
+      "Collaborated with designers and backend developers to ensure smooth implementation across diverse projects.",
+      "Additionally developed 2–3 standalone frontend projects using React.js.",
     ],
-    icon: "/icons/bluechip.png",
+    // icon: techinfiniIcon,
   },
+
   {
-    role: "Intern",
-    company: "NNPC | Internship",
-    date: "July 2023 – Sept. 2023",
+    role: "Frontend Developer",
+    company: "EQUAD LTD · Internship",
+    date: "Sep 2023 – Nov 2023",
     points: [
-      "Came up with cross functional login & sign up page designs that are now integral parts of the tools used within the company.",
-      "Led a team of fellow interns to design various templates and UI components common in internal applications such as dashboards, notification tabs, multi–step forms, tables with pagination etc.",
-      "Also helped interns grasp the basics of design enabling them to make meaningful contributions.",
+      "Worked remotely using React.js to develop components and UI features.",
     ],
-    icon: "/icons/nnpc.png",
-  },
+    icon: "",
+    alt: "Equad",
+  }
 ];
 
 const education = [
   {
-    role: "Bachelor in Information Technology (BIT) - 2022–present",
-    company: "Punjab University (PUCIT), Lahore, Pakistan",
-    date: "2022 – Present",
+    role: "Bachelor of Technology - Computer Science and Engineering",
+    company: "Gyan Sagar College of Engineering",
+    date: "Sep 2019 – May 2023",
     points: [
-      "Acquired comprehensive knowledge in computer science and information technology.",
-      "Enhanced skills in software development, passed with 3.06 CGPA.",
+      "Graduated with a CGPA of 8.43.",
+      "Specialized in Computer Science and Engineering.",
     ],
   },
   {
-    role: "Mern Stack Certification - 2022",
-    company: "Next Bridge, Lahore, Pakistan",
-    date: "2022",
+    role: "Frontend Development Certification",
+    company: "Sheryians Coding School",
+    date: "Dec 2023 – Present",
     points: [
-      "Learned advanced mern-stack, leveraging industry best practices to create dynamic and interactive web applications.",
+      "Completed intensive training focused on modern frontend development practices.",
     ],
   },
 ];
-
 const TimelineItem = ({ item }) => {
   const circleRef = useRef(null);
   const itemRef = useRef(null);
@@ -92,7 +92,7 @@ const TimelineItem = ({ item }) => {
       {/* ⬇️ Move the circle inside this relative container */}
       <div
         ref={circleRef}
-        className="absolute left-[-10px] sm:left-[0px] w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"
+        className="absolute left-[-10px] sm:left-[-22px] w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"
         style={{ top: "60%" }} // Initial position
       ></div>
 
@@ -103,8 +103,8 @@ const TimelineItem = ({ item }) => {
             {item.icon && (
               <img
                 src={item.icon}
-                alt="icon"
-                className="w-10 h-10 rounded-full object-cover"
+                alt={item.alt}
+                className="w-10 h-10 rounded-full object-contain"
               />
             )}
             <div>
