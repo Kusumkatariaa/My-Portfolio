@@ -112,6 +112,13 @@ section {
     padding: 25px;
   }
 
+  section#skills {
+    min-height: 100%;
+  }
+
+  section#contact {
+    min-height: 88vh;
+  }
 }
 
 /* body {

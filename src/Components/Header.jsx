@@ -1,6 +1,7 @@
 import { FaBars, FaTimes } from "react-icons/fa";
 import "../Styles/header.css";
 import gsap from "gsap";
+import MobileMenu from "./MobileMenu";
 import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 
 function Header({ onHeaderAnimationComplete }) {
@@ -99,7 +100,7 @@ function Header({ onHeaderAnimationComplete }) {
 
 
     return (
-        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 sm:w-[89%] z-50">
+        <nav className="fixed top-10 left-1/2 transform -translate-x-1/2 sm:w-[89%] w-[100%] z-50 px-6 sm:px-0">
             <div className="backdrop-blur-0 bg-white/10 shadow-md rounded-2xl px-6 py-4 flex justify-between items-center text-white max-w-7xl mx-auto">
                 {/* Logo */}
                 <a
@@ -131,13 +132,20 @@ function Header({ onHeaderAnimationComplete }) {
                 </ul>
 
                 {/* Hamburger Icon (Mobile only) */}
-                <div className="md:hidden text-xl cursor-pointer" onClick={toggleMenu}>
+                {/* <div className="md:hidden text-xl cursor-pointer" onClick={toggleMenu}>
                     <FaBars />
-                </div>
+                </div> */}
+                <button
+                    className="md:hidden text-white text-3xl z-50 absolute top-4 right-6"
+                    onClick={() => setMenuOpen(true)}
+                >
+                    ☰
+                </button>
+
             </div>
 
             {/* Mobile Menu */}
-            {menuOpen && (
+            {/* {menuOpen && (
                 <div className="fixed top-0 left-0 w-full h-full bg-[#0f172a]/90 z-40 flex flex-col items-center justify-center">
                     <button
                         className="cross absolute top-6 right-6 text-3xl text-white"
@@ -153,7 +161,8 @@ function Header({ onHeaderAnimationComplete }) {
                         <li><a href="#contact" className={linkClass("contact")} onClick={closeMenu}>Contact</a></li>
                     </ul>
                 </div>
-            )}
+            )} */}
+            <MobileMenu menuOpen={menuOpen} closeMenu={() => setMenuOpen(false)} />
         </nav>
     );
 }

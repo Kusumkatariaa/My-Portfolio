@@ -6,6 +6,7 @@ import Home from './Components/Home'
 import About from './Components/About'
 import Contact from './Components/Contact'
 import Projects from './Components/Projects'
+import MobileMenu from './Components/MobileMenu';
 import CustomCursor from './Components/CustomCursor'
 import './index.css'
 import Skills from './Components/Skills'

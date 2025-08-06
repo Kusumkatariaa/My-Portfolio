@@ -12,7 +12,7 @@ function Contact() {
             <div className="text-center mb-12">
                 <p className="text-white text-l tracking-wider uppercase mb-5">You can text me directly</p>
                 <h2 className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">
-                    Connect With Me
+                    Contact Me
                 </h2>
             </div>
 

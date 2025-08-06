@@ -8,9 +8,19 @@
 }
 
 .gradient-text {
-    background: linear-gradient(to bottom right, #7CC0C4, #548FBA, #3C84C7);
-    -webkit-background-clip: text;
+    /* background: linear-gradient(to bottom right, #F5D585, #E5B95C, #D9A441); */
+    /* background: linear-gradient(to bottom right, #7CC0C4, #548FBA, #3C84C7); */
+    /* background: linear-gradient(to bottom right, #FDEE00, #ffae00, #ff7518); */
+    background: radial-gradient(circle, rgba(255, 235, 133, 1), rgba(245, 162, 117, 1));
+    -webkit-background: radial-gradient(circle, rgba(255, 235, 133, 1), rgba(245, 162, 117, 1));
+    -moz-background: radial-gradient(circle, rgba(255, 235, 133, 1), rgba(245, 162, 117, 1));
+
+
+    /* light → mid → dark */
+
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 /* ---------- waving-hand animation ---------- */

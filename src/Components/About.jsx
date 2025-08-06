@@ -87,18 +87,18 @@ const TimelineItem = ({ item }) => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative sm:pl-10 pb-16"
+      className="relative sm:pl-10 pb-10"
     >
       {/* ⬇️ Move the circle inside this relative container */}
       <div
         ref={circleRef}
-        className="absolute left-[-10px] sm:left-[-22px] w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"
+        className="absolute left-[-30px] sm:left-[-22px] w-5 h-5 border-4 border-white rounded-full bg-[#0F172A] z-10"
         style={{ top: "60%" }} // Initial position
       ></div>
 
       {/* Timeline Card */}
       <div className="relative z-10">
-        <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl w-full text-white shadow-[0_4px_20px_rgba(255,255,255,0.1)] sm:ml-6">
+        <div className="bg-white/5 backdrop-blur-md sm:p-6 p-4 rounded-2xl w-full text-white shadow-[0_4px_20px_rgba(255,255,255,0.1)] sm:ml-6">
           <div className="flex items-center gap-4">
             {item.icon && (
               <img
@@ -132,8 +132,8 @@ const WorkEducation = () => {
       </h2>
 
       {/* Timeline - Work */}
-      <div className="relative pl-8">
-        <div className="absolute sm:left-[18px] left-[30px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
+      <div className="relative sm:pl-8 pl-6">
+        <div className="absolute sm:left-[18px] left-[0px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
         {experiences.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}
@@ -144,8 +144,8 @@ const WorkEducation = () => {
       </h2>
 
       {/* Timeline - Education */}
-      <div className="relative pl-8">
-        <div className="absolute sm:left-[18px] left-[30px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
+      <div className="relative sm:pl-8 pl-6">
+        <div className="absolute sm:left-[18px] left-[0px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
         {education.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}
