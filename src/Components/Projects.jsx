@@ -10,39 +10,43 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
     {
-        title: "Project 1",
-        description: "Sample description...",
-        tech: ["React JS", "Node JS", "Mongo DB"],
+        title: "Dandy",
+        description:
+            "An online store in the functional edibles space, specializing in cannabis and psychedelic wellness products. Built on Shopify with a bold, engaging UI, intuitive product categorization, and custom features to comply with industry-specific regulations while delivering a seamless shopping journey.",
+        tech: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
         video: dandyVideo,
-        demo: "#",
+        demo: "https://feeldandy.com/",
     },
     {
-        title: "Project 2",
-        description: "Sample description...",
-        tech: ["React JS", "Node JS", "Mongo DB"],
+        title: "ReviGlow",
+        description:
+            "A Shopify-based eCommerce store for the skincare industry, featuring a clean, modern design and optimized product pages to enhance customer engagement and drive conversions. Integrated smooth navigation, high-quality visuals, and user-friendly shopping experience tailored for beauty and skincare brands.",
+        tech: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
         video: revaGrowthVideo,
-        demo: "#",
+        demo: "https://reviglow.com/",
     },
     {
-        title: "Project 3",
-        description: "Sample description...",
-        tech: ["React JS", "Node JS", "Mongo DB"],
+        title: "Blume Light",
+        description:
+            "A Shopify store for the home decor and interior design industry, focusing on premium lighting products. Designed with an elegant aesthetic, immersive product displays, and intuitive filtering options to help customers easily discover and purchase statement lighting pieces.",
+        tech: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
         video: blumeLightVideo,
-        demo: "#",
+        demo: "https://shopblumelight.com/",
     },
     {
-        title: "Project 4",
-        description: "Sample description...",
-        tech: ["React JS", "Node JS", "Mongo DB"],
+        title: "Nazranna",
+        description: "A luxury apparel and fashion Shopify store, specializing in ethnic and bridal wear. Implemented custom design elements, advanced filtering for product categories, and a seamless mobile shopping experience.",
+        tech: ["Shopify", "Liquid", "JavaScript", "CSS"],
         video: dandyVideo,
-        demo: "#",
+        demo: "https://nazranaanj.com/",
     },
     {
-        title: "Project 5",
-        description: "Sample description...",
-        tech: ["React JS", "Node JS", "Mongo DB"],
+        title: "Akara",
+        description:
+            "A sleek Shopify store in the shapewear segment of the apparel and fashion industry. Focused on delivering a premium brand feel with minimalist design, high-quality product photography, and an optimized shopping flow to encourage conversions and repeat purchases.",
+        tech: ["Shopify", "Liquid", "HTML", "CSS", "JavaScript"],
         video: revaGrowthVideo,
-        demo: "#",
+        demo: "https://akarashop.com/",
     },
 ];
 

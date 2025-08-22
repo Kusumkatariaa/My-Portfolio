@@ -5,7 +5,16 @@
 }
 
 /* .contact-btn {
-background: radial-gradient(circle, rgba(255, 235, 133, 1), rgba(245, 162, 117, 1));
--webkit-background: radial-gradient(circle, rgba(255, 235, 133, 1), rgba(245, 162, 117, 1));
--moz-background: radial-gradient(circle, rgba(255, 235, 133, 1), rgba(245, 162, 117, 1));
+    background: linear-gradient(110deg, rgba(66, 144, 245, 1), rgba(255, 195, 113, 1));
+    -webkit-background: linear-gradient(110deg, rgba(66, 144, 245, 1), rgba(255, 195, 113, 1));
+    -moz-background: linear-gradient(110deg, rgba(66, 144, 245, 1), rgba(255, 195, 113, 1));
 } */
+
+
+img.contact-img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}

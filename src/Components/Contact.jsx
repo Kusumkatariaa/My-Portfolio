@@ -1,6 +1,8 @@
 import React from "react";
-import image from "../assets/images/mail-image.webp"; // Ensure you have the image in the correct path
+// import image from "../assets/images/"; // Ensure you have the image in the correct path
+import image from "../assets/images/videoframe.png"; // Import the GIF if needed
 import "../Styles/contact.css"; // Import your CSS styles for the contact section
+// import gif from '../assets/images/animation.gif'; // Import the GIF if needed
 
 
 function Contact() {
@@ -22,7 +24,7 @@ function Contact() {
                     <img
                         src={image} // Replace this with your image import or path
                         alt="Mail Illustration"
-                        className="w-full"
+                        className="contact-img w-full"
                     />
                 </div>
 
@@ -74,7 +76,7 @@ function Contact() {
                         ></textarea>
                         <button
                             type="submit"
-                            className="bg-gradient-to-r from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] text-white font-semibold py-3 rounded-md hover:opacity-90 transition-all"
+                            className="contact-btn bg-gradient-to-r from-[#7CC0C4] via-[#548FBA] to-[#3C84C7] text-white font-semibold py-3 rounded-md hover:opacity-90 transition-all"
                         >
                             Submit
                         </button>
