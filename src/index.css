@@ -85,8 +85,15 @@ button:focus-visible {
 
 body {
   cursor: none;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
+
+@media (max-width: 600px) {
+  section#about {
+    padding-top: 73% !important;
+  }
+}
+
 
 /* 
 a:hover~.custom-cursor,
