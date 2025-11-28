@@ -26,3 +26,4 @@ dist-ssr
 *.sln
 *.sw?
 .env
+src/assets/skills/lotusmd-logo-white-scaled.png
