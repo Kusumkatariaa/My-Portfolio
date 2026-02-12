@@ -83,7 +83,7 @@ const fragment = /* glsl */ `
   }
 `;
 
-const Particles = ({
+export const Particles = ({
     particleCount = 200,
     particleSpread = 10,
     speed = 0.1,
@@ -233,4 +233,3 @@ const Particles = ({
     return <div ref={containerRef} className={`relative w-full h-full ${className}`} />;
 };
 
-export default Particles;
