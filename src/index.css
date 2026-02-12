@@ -90,7 +90,7 @@ body {
 
 @media (max-width: 600px) {
   section#about {
-    padding-top: 65% !important;
+    padding-top: 25% !important;
   }
 }
 
@@ -116,8 +116,12 @@ section {
 
 @media screen and (max-width: 600px) {
   body {
-    padding: 25px;
+    padding: 20px;
   }
+
+  /* .cursorHide {
+    display: none;
+  } */
 
   section#skills {
     min-height: 100%;

@@ -9,4 +9,18 @@
         left: -40px;
         top: 20px;
     }
+
+    .mobile-text {
+        font-size: 15px;
+        line-height: 1.5rem;
+        padding-bottom: 10px;
+    }
+
+    .mob-size {
+        padding: 10px;
+    }
+
+    .mob-padding-adjust {
+        padding-left: 1.89rem;
+    }
 }

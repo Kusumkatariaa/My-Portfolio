@@ -13,12 +13,14 @@ const experiences = [
     company: "TechInfini Solutions Pvt. Ltd.",
     date: "Dec 2023 – Present",
     points: [
-      "Developed and maintained over 80 eCommerce websites using Shopify, focusing on scalable storefronts and customized themes.",
-      "Integrated various Shopify apps such as subscription carts, review systems, and upsell tools to enhance store functionality.",
-      "Built responsive, SEO-friendly, and performance-optimized storefronts using Liquid, HTML/CSS, and Shopify APIs.",
-      "Improved Core Web Vitals and site performance through lazy loading, asset optimization, and accessibility fixes.",
-      "Collaborated with designers and backend developers to ensure smooth implementation across diverse projects.",
-      "Additionally developed 2–3 standalone frontend projects using React.js.",
+      "Designed and developed high-performance, responsive web applications using HTML5, CSS3, JavaScript (ES6+), React.js, and Shopify Liquid, delivering modern, scalable, and conversion-focused user interfaces for clients across various domains.",
+      "Built modular and reusable React components leveraging hooks, JSX, and virtual DOM principles to ensure maintainable architecture, optimized rendering, and scalable front-end systems.",
+      "Developed full-stack features using the MERN stack (MongoDB, Express.js, React.js, Node.js), including RESTful API integration, authentication flows (JWT), dynamic dashboards, and real-time data handling.",
+      "Engineered custom Shopify themes and storefront solutions, aligning with brand identity and business goals using Liquid, JavaScript, JSON templates, and performance optimization techniques.",
+      "Implemented API integrations and backend connectivity, enabling seamless communication between frontend and server-side logic for user authentication, product management, and data-driven interfaces.",
+      "Optimized web performance and SEO strategies, improving Lighthouse scores, page load speed, structured metadata implementation, and search engine visibility.",
+      "Delivered cross-browser compatible and fully responsive solutions, ensuring pixel-perfect user experiences across Chrome, Firefox, Safari, Edge, and all device breakpoints (desktop, tablet, mobile).",
+      "Collaborated directly with clients, designers, and stakeholders, translating business requirements and UI/UX mockups into interactive, production-ready applications while maintaining clean code and version control best practices (Git).",
     ],
     // icon: techinfiniIcon,
   },
@@ -98,7 +100,7 @@ const TimelineItem = ({ item }) => {
 
       {/* Timeline Card */}
       <div className="relative z-10">
-        <div className="bg-white/5 backdrop-blur-md sm:p-6 p-4 rounded-2xl w-full text-white shadow-[0_4px_20px_rgba(255,255,255,0.1)] sm:ml-6">
+        <div className="mob-size bg-white/5 backdrop-blur-md sm:p-6 p-4 rounded-2xl w-full text-white shadow-[0_4px_20px_rgba(255,255,255,0.1)] sm:ml-6">
           <div className="flex items-center gap-4">
             {item.icon && (
               <img
@@ -108,7 +110,7 @@ const TimelineItem = ({ item }) => {
               />
             )}
             <div>
-              <h3 className="text-xl font-semibold">{item.role}</h3>
+              <h3 className="mobile-text text-xl font-semibold">{item.role}</h3>
               <p className="text-sm font-bold text-white/70">{item.company}</p>
               <p className="text-sm text-white/50">{item.date}</p>
             </div>
@@ -132,8 +134,8 @@ const WorkEducation = () => {
       </h2>
 
       {/* Timeline - Work */}
-      <div className="relative sm:pl-8 pl-6">
-        <div className="absolute sm:left-[18px] left-[0px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
+      <div className="relative sm:pl-8 pl-6 mob-padding-adjust">
+        <div className="absolute sm:left-[18px] left-[7px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
         {experiences.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}
@@ -144,8 +146,8 @@ const WorkEducation = () => {
       </h2>
 
       {/* Timeline - Education */}
-      <div className="relative sm:pl-8 pl-6">
-        <div className="absolute sm:left-[18px] left-[0px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
+      <div className="relative sm:pl-8 pl-6 mob-padding-adjust">
+        <div className="absolute sm:left-[18px] left-[7px] top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#0a2742] via-[#87afd5] to-[#0a2742]/10 z-0"></div>
         {education.map((item, index) => (
           <TimelineItem key={index} item={item} />
         ))}

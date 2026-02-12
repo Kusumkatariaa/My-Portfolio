@@ -124,7 +124,7 @@ const Projects = () => {
     }, []);
 
     return (
-        <section id="projects" className="py-32">
+        <section id="projects" className="py-5">
             {/* Static Heading */}
             <div ref={headingRef} className="text-center mb-10">
                 <p className="text-white text-l tracking-wider uppercase mb-2">

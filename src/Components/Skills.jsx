@@ -40,7 +40,7 @@ const Skills = () => {
                 <p className="uppercase __className_b40857 text-4xl md:text-5xl xl:text-6xl font-bold text-white/60 mb-10">Skills And Technologies</p>
             </div>
 
-            <div className="flex justify-center items-center w-full gap-6 sm:gap-9 flex-wrap max-w-4xl mx-auto">
+            <div className="flex justify-center items-center w-full sm:gap-9 flex-wrap max-w-4xl mx-auto">
                 {/* Map through the skills array to display each skill */}
                 {skills.map((skill, index) => (
                     <div

@@ -70,8 +70,10 @@
 
 
 @media screen and (max-width: 600px) {
+
+
     .main-head {
-        font-size: 35px;
+        font-size: 33px;
         line-height: 1;
     }
 

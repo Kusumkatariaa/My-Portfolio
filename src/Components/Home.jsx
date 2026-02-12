@@ -130,12 +130,12 @@ function Home({ triggerHomeAnimation }) {
                 </div>
 
                 {/* Image Section */}
-                <div className="w-full flex justify-center md:justify-end">
+                <div className="flex justify-center md:justify-end">
                     <div
                         ref={imageWrapperRef}
                         style={{ opacity: 0 }}
 
-                        className="bg-[#f3e5dc] p-2 rounded-[20px] transform rotate-4 h-[max-content]"
+                        className="mobile-size bg-[#f3e5dc] p-2 rounded-[20px] transform rotate-4 h-[max-content]"
                     >
                         <img
                             ref={imageRef}

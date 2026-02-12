@@ -1,48 +1,60 @@
 import express from "express";
-import nodemailer from "nodemailer";
 import cors from "cors";
 import dotenv from "dotenv";
+import { Resend } from "resend";
 
 dotenv.config();
+
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-    },
-});
+if (!process.env.RESEND_API_KEY) {
+    console.error("❌ RESEND_API_KEY missing in .env");
+    process.exit(1);
+}
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.post("/api/send", async (req, res) => {
     const { name, email, message } = req.body;
 
-    console.log("Form Data Received:", { name, email, message });
-
-
-    const mailOptions = {
-        from: process.env.GMAIL_USER, // always your authenticated email
-        to: process.env.GMAIL_USER,   // send to yourself
-        subject: `New message from ${name}`,
-        text: `
-Name: ${name}
-Email: ${email}
-Message: ${message}
-  `,
-        replyTo: email, // ✅ this allows you to reply directly to the user's email
-    };
+    if (!name || !email || !message) {
+        return res.status(400).json({
+            success: false,
+            message: "All fields are required",
+        });
+    }
 
     try {
-        await transporter.sendMail(mailOptions);
-        console.log("✅ Email sent successfully.");
-        res.status(200).json({ success: true });
-    } catch (err) {
-        console.error("❌ Email sending failed:", err);
-        res.status(500).json({ success: false, error: err.toString() });
+        await resend.emails.send({
+            from: "Portfolio <onboarding@resend.dev>",
+            to: process.env.MY_EMAIL,
+            subject: `New message from ${name}`,
+            reply_to: email,
+            html: `
+        <h2>📩 New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
+      `,
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "Email sent successfully",
+        });
+
+    } catch (error) {
+        console.error("❌ Resend error:", error.message);
+
+        return res.status(500).json({
+            success: false,
+            message: "Failed to send email",
+        });
     }
 });
 

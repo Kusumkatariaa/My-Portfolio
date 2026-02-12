@@ -32,14 +32,14 @@ const CustomCursor = () => {
         <>
             <div
                 ref={outerRef}
-                className="pointer-events-none fixed top-0 left-0 w-4 h-4 bg-red-500 rounded-full mix-blend-difference z-[9999]"
+                className="hidden md:block pointer-events-none fixed top-0 left-0 w-4 h-4 bg-red-500 rounded-full mix-blend-difference z-[9999]"
                 style={{ transform: 'translate(-100px, -100px)' }}
             />
 
 
             <div
                 ref={innerRef}
-                className="pointer-events-none fixed top-0 left-0 w-8 h-8 bg-white rounded-full mix-blend-difference z-[9999] transition-transform duration-100 ease-out"
+                className="hidden md:block pointer-events-none fixed top-0 left-0 w-8 h-8 bg-white rounded-full mix-blend-difference z-[9999] transition-transform duration-100 ease-out"
                 style={{ transform: 'translate(-100px, -100px)' }}
             />
         </>

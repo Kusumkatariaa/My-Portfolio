@@ -8,7 +8,7 @@ import Contact from './Components/Contact'
 import Projects from './Components/Projects'
 import MobileMenu from './Components/MobileMenu';
 import CustomCursor from './Components/CustomCursor'
-import Particles from './Components/Particle';
+import {Particles} from './Components/Particle';
 import './index.css'
 import Skills from './Components/Skills'
 
