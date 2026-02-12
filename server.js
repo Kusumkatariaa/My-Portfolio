@@ -27,6 +27,14 @@ app.post("/api/send", async (req, res) => {
             message: "All fields are required",
         });
     }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({
+            success: false,
+            message: "Invalid email format",
+        });
+    }
 
     try {
         await resend.emails.send({

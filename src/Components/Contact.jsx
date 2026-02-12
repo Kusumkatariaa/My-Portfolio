@@ -64,6 +64,7 @@ function Contact() {
                             type="email"
                             name="email"
                             required
+                            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
                             placeholder="Your Email"
                             className="bg-[#1e2633] text-white placeholder-gray-400 p-3 rounded-md border border-gray-600 outline-none focus:ring-2 focus:ring-[#548FBA]"
                         />
