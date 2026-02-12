@@ -16,7 +16,7 @@ function MobileMenu({ menuOpen, closeMenu }) {
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: "-100%", opacity: 0 }}
                     transition={{ type: "tween", duration: 0.5 }}
-                    className="fixed h-[100vh] inset-0 z-[999] bg-black/90 flex flex-col items-start px-10 justify-start pt-[0px] space-y-10 "
+                    className="fixed h-[100vh] inset-0 z-[999] bg-[#000000cc] flex flex-col items-start px-10 justify-start pt-[0px] space-y-10 "
                 >
                     {/* Close Button */}
                     <button
